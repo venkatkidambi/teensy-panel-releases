@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Download Teensy Panel for macOS and Windows. Installation and firmware instructions for the Teensy 4.1 experiment controller."
+    />
+    <meta name="theme-color" content="#164e48" />
+    <title>Teensy Panel — Downloads</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="./">Teensy Panel</a>
+      <nav aria-label="Main navigation">
+        <a href="#changelog">Changelog</a>
+        <a href="#installation">Installation</a>
+        <a href="#firmware">Firmware</a>
+        <a href="https://github.com/venkatkidambi/teensy-panel-releases"
+          >GitHub</a
+        >
+      </nav>
+    </header>
+    <main id="main" class="wrap">
+      <section id="downloads" aria-labelledby="downloads-title">
+        <div class="page-heading">
+          <h1 id="downloads-title">Downloads</h1>
+          <p>
+            Teensy Panel is a desktop app for the Teensy 4.1 experiment
+            controller, with a dashboard, force calibration, and firmware tools.
+          </p>
+        </div>
+        <p id="release-status" class="release-status" role="status">
+          Loading release information…
+        </p>
+        <noscript
+          ><p class="notice">
+            JavaScript is needed to show current download buttons.
+            <a
+              href="https://github.com/venkatkidambi/teensy-panel-releases/releases"
+              >Choose an installer on GitHub Releases</a
+            >. Installation instructions are below.
+          </p></noscript
+        >
+        <div id="release-channels"></div>
+        <div class="download-footnote">
+          <p>
+            Stable and Nightly are separate apps. Only one can connect to a
+            Teensy at a time. Updates stay on your installed channel.
+          </p>
+          <a
+            href="https://github.com/venkatkidambi/teensy-panel-releases/releases"
+            >Previous versions</a
+          >
+        </div>
+      </section>
+      <section
+        class="section"
+        id="installation"
+        aria-labelledby="installation-title"
+      >
+        <h2 id="installation-title">Installation</h2>
+        <p class="section-description">
+          The installer includes matching firmware and a native flasher. No
+          Rust, Node, ARM GNU, Arduino, or Homebrew installation is needed.
+        </p>
+        <div class="install-grid">
+          <article>
+            <h3>macOS <span class="system">12+</span></h3>
+            <ol>
+              <li>
+                Choose the Apple Silicon or Intel DMG. Check your chip in
+                <strong>Apple menu → About This Mac</strong>.
+              </li>
+              <li>
+                Open the DMG and drag <strong>Teensy Panel</strong> into
+                <strong>Applications</strong>.
+              </li>
+              <li>Open the app from Applications.</li>
+            </ol>
+            <p class="install-note">
+              Builds are not Apple-notarized. You may need to approve the app in
+              <strong>System Settings → Privacy &amp; Security</strong> (System
+              Preferences on macOS 12).
+            </p>
+          </article>
+          <article>
+            <h3>Windows <span class="system">10 / 11 · x64</span></h3>
+            <ol>
+              <li>Download the <strong>64-bit Setup EXE</strong>.</li>
+              <li>Run the installer and follow the prompts.</li>
+              <li>
+                Open <strong>Teensy Panel</strong>. WebView2 is included for
+                offline installation.
+              </li>
+            </ol>
+            <p class="install-note">
+              Installers are not Authenticode-signed, so SmartScreen may appear.
+              App-update signatures are separate from platform signatures.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section" id="firmware" aria-labelledby="firmware-title">
+        <h2 id="firmware-title">Teensy 4.1 firmware</h2>
+        <p class="section-description">
+          Desktop updates do not automatically flash hardware. Install the
+          bundled firmware separately from inside the app.
+        </p>
+        <p class="notice">
+          Stop experiments and save your data before flashing. Flashing resets
+          temporary board settings and data.
+        </p>
+        <ol class="firmware-steps">
+          <li>
+            Connect only the Teensy 4.1 you intend to flash. Close other serial
+            tools and Teensy loaders.
+          </li>
+          <li>
+            Open <strong>App &amp; firmware</strong>, acknowledge the
+            preparation steps, and click
+            <strong>Install bundled firmware</strong>.
+          </li>
+          <li>
+            Press the Teensy Program button when prompted. Keep USB connected
+            until flashing completes.
+          </li>
+          <li>
+            Wait for the board to restart, then click
+            <strong>Refresh</strong> and <strong>Connect Teensy</strong>.
+          </li>
+        </ol>
+      </section>
+      <section class="section" id="changelog" aria-labelledby="changelog-title">
+        <h2 id="changelog-title">Changelog</h2>
+        <p class="section-description">Recent stable and nightly release notes.</p>
+        <div id="changelog-entries">
+          <p class="changelog-fallback"><a href="https://github.com/venkatkidambi/teensy-panel-releases/releases">Read release notes on GitHub</a></p>
+        </div>
+      </section>
+      <!-- Reserved for a real screenshot; not displayed until available. -->
+      <template id="screenshot-placeholder">
+        <figure>
+          <figcaption>Application screenshot placeholder</figcaption>
+        </figure>
+      </template>
+    </main>
+    <footer class="site-footer wrap">
+      <p>
+        Release notes include the source commit and firmware hash. Use each
+        release’s <code>SHA256SUMS.txt</code> to verify downloads.
+      </p>
+      <a href="https://github.com/venkatkidambi/teensy-panel-releases"
+        >GitHub repository</a
+      >
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "changelog": [
+    {
+      "channel": "nightly",
+      "notes": "Compared with [0.2.0-nightly.7.1](https://github.com/venkatkidambi/teensy-panel-releases/releases/tag/nightly-0.2.0-nightly.7.1).\n\n**Routine rebuild — no new source commits.** This rebuild uses the same application and firmware source as the previous release. Build tools or packaging may still differ.",
+      "published_at": "2026-10-20T12:06:09Z",
+      "tag": "nightly-0.2.0-nightly.8.1",
+      "url": "https://github.com/venkatkidambi/teensy-panel-releases/releases/tag/nightly-0.2.0-nightly.8.1",
+      "version": "0.2.0-nightly.8.1"
+    },
+    {
+      "channel": "nightly",
+      "notes": "Compared with [0.2.0-nightly.6.1](https://github.com/venkatkidambi/teensy-panel-releases/releases/tag/nightly-0.2.0-nightly.6.1).\n\n**New changes**\n\n- Show release changes and distinguish routine nightly rebuilds",
+      "published_at": "2026-10-19T22:18:28Z",
+      "tag": "nightly-0.2.0-nightly.7.1",
+      "url": "https://github.com/venkatkidambi/teensy-panel-releases/releases/tag/nightly-0.2.0-nightly.7.1",
+      "version": "0.2.0-nightly.7.1"
+    },
+    {
+      "channel": "nightly",
+      "notes": "Compared with [0.2.0-nightly.4.1](https://github.com/venkatkidambi/teensy-panel-releases/releases/tag/nightly-0.2.0-nightly.4.1).\n\n**New changes**\n\n- Polish firmware confirmation and remove redundant UI labels",
+      "published_at": "2026-10-19T21:50:30Z",
+      "tag": "nightly-0.2.0-nightly.6.1",
+      "url": "https://github.com/venkatkidambi/teensy-panel-releases/releases/tag/nightly-0.2.0-nightly.6.1",
+      "version": "0.2.0-nightly.6.1"
+    },
+    {
+      "channel": "nightly",
+      "notes": "**Initial nightly release.** This is the first published release on this channel.",
+      "published_at": "2026-10-19T20:52:48Z",
+      "tag": "nightly-0.2.0-nightly.4.1",
+      "url": "https://github.com/venkatkidambi/teensy-panel-releases/releases/tag/nightly-0.2.0-nightly.4.1",
+      "version": "0.2.0-nightly.4.1"
+    }
+  ],
+  "nightly": {
+    "checksums": {
+      "name": "SHA256SUMS.txt",
+      "size": 1555,
+      "updated_at": "2026-10-20T12:05:59Z",
+      "url": "https://github.com/venkatkidambi/teensy-panel-releases/releases/download/nightly-0.2.0-nightly.8.1/SHA256SUMS.txt"
+    },
+    "installers": {
+      "macos_arm64": {
+        "name": "aarch64-apple-darwin-Teensy-Panel-Nightly_0.2.0-nightly.8.1_aarch64.dmg",
+        "size": 2593512,
+        "updated_at": "2026-10-20T12:05:56Z",
+        "url": "https://github.com/venkatkidambi/teensy-panel-releases/releases/download/nightly-0.2.0-nightly.8.1/aarch64-apple-darwin-Teensy-Panel-Nightly_0.2.0-nightly.8.1_aarch64.dmg"
+      },
+      "macos_x64": {
+        "name": "x86_64-apple-darwin-Teensy-Panel-Nightly_0.2.0-nightly.8.1_x64.dmg",
+        "size": 2771667,
+        "updated_at": "2026-10-20T12:05:58Z",
+        "url": "https://github.com/venkatkidambi/teensy-panel-releases/releases/download/nightly-0.2.0-nightly.8.1/x86_64-apple-darwin-Teensy-Panel-Nightly_0.2.0-nightly.8.1_x64.dmg"
+      },
+      "windows_x64": {
+        "name": "x86_64-pc-windows-msvc-Teensy-Panel-Nightly_0.2.0-nightly.8.1_x64-setup.exe",
+        "size": 219178052,
+        "updated_at": "2026-10-20T12:06:07Z",
+        "url": "https://github.com/venkatkidambi/teensy-panel-releases/releases/download/nightly-0.2.0-nightly.8.1/x86_64-pc-windows-msvc-Teensy-Panel-Nightly_0.2.0-nightly.8.1_x64-setup.exe"
+      }
+    },
+    "published_at": "2026-10-20T12:06:09Z",
+    "tag": "nightly-0.2.0-nightly.8.1",
+    "url": "https://github.com/venkatkidambi/teensy-panel-releases/releases/tag/nightly-0.2.0-nightly.8.1",
+    "version": "0.2.0-nightly.8.1"
+  },
+  "repository": "venkatkidambi/teensy-panel-releases",
+  "schema_version": 1,
+  "stable": null
+}

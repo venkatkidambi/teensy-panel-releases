@@ -1,0 +1,86 @@
+name: Deploy download website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "scripts/generate_releases.py"
+      - "tests/**"
+      - ".github/workflows/pages.yml"
+  release:
+    types: [published]
+  workflow_dispatch:
+  # Also catches releases published by external workflows, missed events, and
+  # assets uploaded after publication. Offset from the busy top of the hour.
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: download-website-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      deploy: ${{ steps.decision.outputs.deploy }}
+    steps:
+      # Release tags may point at old trees. Always build the website from main.
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Test metadata generator
+        run: python3 -m unittest discover -s tests -v
+      - name: Refresh release metadata
+        id: metadata
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python3 scripts/generate_releases.py
+          --previous-url https://venkatkidambi.github.io/teensy-panel-releases/releases.json
+          --github-output "$GITHUB_OUTPUT"
+      - name: Decide whether to deploy
+        id: decision
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          METADATA_CHANGED: ${{ steps.metadata.outputs.changed }}
+          METADATA_SOURCE: ${{ steps.metadata.outputs.source }}
+        run: |
+          if [[ "$EVENT_NAME" == "schedule" && "$METADATA_CHANGED" == "false" ]]; then
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            echo "Metadata unchanged; skipping Pages upload and deployment (source: $METADATA_SOURCE)." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+            echo "Website ready for deployment (metadata source: $METADATA_SOURCE)." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload website
+        if: steps.decision.outputs.deploy == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure existing Pages site
+        uses: actions/configure-pages@v5
+        with:
+          enablement: false
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
