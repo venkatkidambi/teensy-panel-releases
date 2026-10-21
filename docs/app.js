@@ -299,12 +299,18 @@ async function loadReleases() {
   const status = document.getElementById("release-status");
   const container = document.getElementById("release-channels");
   try {
-    const response = await fetch("./releases.json", {
-      cache: "no-cache",
-      signal: AbortSignal.timeout(10000),
-    });
-    if (!response.ok) throw new Error("Release information unavailable");
-    const data = await response.json();
+    // Deployed pages carry their own snapshot, avoiding a separately cached JSON URL.
+    const embedded = document.getElementById("release-data");
+    let data = embedded ? JSON.parse(embedded.textContent) : null;
+    if (data === null) {
+      // Keep an unbuilt local checkout usable for previewing the website.
+      const response = await fetch("./releases.json", {
+        cache: "no-cache",
+        signal: AbortSignal.timeout(10000),
+      });
+      if (!response.ok) throw new Error("Release information unavailable");
+      data = await response.json();
+    }
     if (
       data.schema_version !== 1 ||
       data.repository !== REPOSITORY ||
